@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+</head>
+
+<body>
+    <div class="all">
+        <h3>Tabbed Image Gallery</h3>
+        <p>Click on the images below</p>
+        <div class="image">
+            <img src="./img/BARC.png" title="BARC">
+            <img src="./img/Davinci.png" title="Davinci">
+            <img src="./img/EnglishForTech.jpg" title="English For Tech">
+            <img src="./img/harrypotter.png" title="Harry Potter">
+        </div>
+    </div>
+
+    <style>
+        h3 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image img {
+            padding-right: 15px;
+            width: 200px;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .image img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var images = document.querySelectorAll('.image img');
+
+            for (let image of images) {
+                image.addEventListener('click', function () {
+                    let src = this.getAttribute('src');
+                    let title = this.getAttribute('title');
+                    let div = document.createElement('div');
+
+                    div.innerHTML = `<p>${title}</p>`;
+                    div.innerHTML += `<button style="color:black;border:5px solid black; position: absolute;" onclick="this.parentElement.remove()">X</button>`;
+                    div.innerHTML += `<img src="${src}" title="${title}">`;
+                    document.body.appendChild(div);
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

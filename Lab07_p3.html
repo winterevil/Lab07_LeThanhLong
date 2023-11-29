@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>querySelectorAll() Method</title>
+
+    <script>
+        function changeFormat() {
+            var p = document.querySelectorAll('.example');
+            var p2 = document.querySelector('#l1');
+            var a = document.querySelectorAll('.attribute');
+            var h = document.querySelectorAll('.title');
+
+            p2.style.background = 'yellow';
+
+            for (let i = 0; i < p.length; i++) {
+                p[i].style.border = '2px solid green';
+            }
+
+            for (let j = 0; j < a.length; j++) {
+                a[j].style.border = '2px solid red';
+            }
+
+            for (let k = 0; k < h.length; k++) {
+                h[k].style.color = 'orange';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="all">
+        <p class="example" id="l1" style="background: lightblue;border: 1px solid;">This is the first paragraph with
+            class
+            "example".</p>
+        <p class="example" style="background:lightblue;border: 1px solid;">Another paragraph with class "example".</p>
+        <p>This is a regular paragraph.</p>
+        <a href="#" class="attribute">Link with target attribute</a><br>
+        <a href="#" class="attribute">Another link with target attribute</a>
+        <h1 class="title" style="color: purple;">Title 1</h1>
+        <h2 class="title" style="color: purple;">Title 2</h2>
+        <button type="button" onclick="changeFormat()">Change</button>
+    </div>
+</body>
+
+</html>

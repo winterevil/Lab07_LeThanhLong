@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replace all href values</title>
+
+    <script>
+        function replaceHref(){
+            var links = document.querySelectorAll('[href]');
+
+            for (let link of links){
+                link.setAttribute('href','https://www.w3schools.com/js/default.asp');
+            }
+        }
+    </script>
+</head>
+<body onload="replaceHref()">
+    <div class="replace-href">
+        <p>Problem 1. Replace all href values</p>
+        <a href="#">Website 1</a><br>
+        <a href="#">Website 2</a><br>
+        <a href="#">Website 3</a>
+    </div>
+</body>
+</html>

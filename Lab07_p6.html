@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+
+</head>
+
+<body>
+    <form name="Registration" method="post">
+        <table border="1">
+            <tr>
+                <th><label>Fullname*</label></th>
+                <td class="name"><input type="text" id="name">
+                </td>
+            </tr>
+            <tr>
+                <th><label>Email*</label></th>
+                <td class="email"><input type="email" id="email"></td>
+            </tr>
+            <tr>
+                <th><label>Password*</label></th>
+                <td class="password"><input type="password" name="password" id="password"></td>
+            </tr>
+            <tr>
+                <th><label>Confirm Password*</label></th>
+                <td class="confirm_password"><input type="password" name="confirm_password" id="confirm_password"></td>
+            </tr>
+            <tr>
+                <th><label>Phone Number*</label></th>
+                <td class="Number"><input type="tel" id="Number" pattern="[0-9]{10}"></td>
+            </tr>
+            <tr>
+                <th><label>Address</label></th>
+                <td><textarea name="address" cols="30" rows="3"></textarea></td>
+            </tr>
+            <tr>
+                <th><label>City</label></th>
+                <td><input type="text" placeholder="Enter your City">
+                    <b>State</b>
+                    <input type="text" placeholder="Enter your State">
+                </td>
+            </tr>
+            <tr>
+                <th><label>Zip/Postal Code</label></th>
+                <td><input type="text" placeholder="Enter your Zip/Postal Code"></td>
+            </tr>
+            <tr>
+                <th><label>Country</label></th>
+                <td><select name="country">
+                        <option value="v0" selected>[Select your country]</option>
+                        <option value="v1">Vietnam</option>
+                        <option value="v2">USA</option>
+                        <option value="v3">England</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <th><label>Birthday</label></th>
+                <td><input type="date"></td>
+            </tr>
+            <tr>
+                <th><label>Gender</label></th>
+                <td>
+                    <select name="gender">
+                        <option value="v1" selected>Male</option>
+                        <option value="v2">Female</option>
+                        <option value="v3">Other</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label>Starting Date</label></th>
+                <td>
+                    <input type="radio" name="Season" id="Spring">
+                    <label for="Spring">Spring</label>
+                    <input type="radio" name="Season" id="Summer">
+                    <label for="Summer">Summer</label>
+                </td>
+            </tr>
+            <tr>
+                <th><label>Comments</label></th>
+                <td><textarea name="comment" cols="30" rows="3"
+                        placeholder="Please send us more information"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <center><button type="button"
+                            onclick="checkValid('name','email','password','confirm_password','Number')">Submit</button>
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        
+
+            function checkValid() {
+                let form = document.forms['Registration'];
+                let allValid = true;
+
+                for (args of arguments) {
+                    let input = document.getElementById(args);
+                    let col = document.getElementsByClassName(args)[0];
+                    let message = col.getElementsByClassName('error-message')[0];
+
+                    if (message) {
+                        col.removeChild(message);
+                    }
+
+                    message = document.createElement('div');
+                    message.className = 'error-message';
+
+                    if (args != 'password' && args != 'confirm_password') {
+                        if (!input.value) {
+                            allValid = false;
+                            message.innerHTML = 'Please input your ' + args;
+                            message.style.color = 'red';
+                            col.appendChild(message);
+                        }
+                    }
+
+                    if (args == 'password') {
+                        allValid = false;
+                        message.innerHTML = 'Please input your password (min-length = 6)';
+                        message.style.color = 'red';
+                        col.appendChild(message);
+                    }
+
+                    if (args == 'confirm_password') {
+                        if (input.value != document.getElementById('password').value) {
+                            allValid = false;
+                            message.innerHTML = 'It does not match your password';
+                            message.style.color = 'red';
+                            col.appendChild(message);
+                        }
+                    }
+                }
+                if (allValid) {
+                    form.submit();
+                }
+            }
+        
+    </script>
+</body>
+
+</html>

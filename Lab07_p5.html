@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert Messages</title>
+</head>
+
+<body>
+    <h3>Alert Messages</h3>
+    <p>Click on the "x" symbol to close the alert message.</p>
+    <div id="alert"></div>
+
+    <script>
+
+            function showAlert(message, color) {
+                let alertDiv = document.createElement('div');
+
+                alertDiv.innerHTML = `${message}`;
+
+                alertDiv.style.color = 'white';
+                alertDiv.style.background = color;
+                alertDiv.style.padding = '16px';
+                alertDiv.style.margin = '12px';
+
+                alertDiv.innerHTML += `<span style="position:absolute; right: 3%; cursor: pointer;" onclick="this.parentElement.remove()">X</span>`;
+
+                let alertCon = document.getElementById('alert');
+                alertCon.appendChild(alertDiv);
+
+                setTimeout(function () {
+                    alertDiv.remove();
+                }, 5000);
+            }
+
+            showAlert('Danger! Indicates a dangerous or potentially negative action.', 'red');
+            showAlert('Success! Indicates a successful or positive action.', 'green');
+            showAlert('Info! Indicates a neutral informative change or action.', 'blue');
+            showAlert('Warning! Indicates a warning that might need attention.', 'orange');
+
+    </script>
+</body>
+
+</html>

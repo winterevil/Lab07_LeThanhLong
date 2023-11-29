@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>querySelector() Method</title>
+
+    <script>
+        function changeFormat() {
+            var p = document.querySelector('.l1');
+            p.style.color = 'blue';
+            p.style.background = 'yellow';
+
+            var a = document.querySelector('[href]');
+            a.style.border = '1px solid red';
+        }
+    </script>
+</head>
+
+<body>
+    <div class="p2">
+        <p class="l1" style="color: green; background: lightblue;">This is the first paragraph with class "example"</p>
+        <p>This is anothr paragraph.</p>
+        <a href="#">Link with target attribute</a><br>
+        <button type="button" onclick="changeFormat()">Change</button>
+    </div>
+</body>
+
+</html>
